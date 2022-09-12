@@ -1,5 +1,9 @@
-// Alec Rizzo - arizzo3@ramapo.edu
-
+//************************************************************
+//* Name:  Alec Rizzo
+//* Project : Mexican Train C++
+//* Class : Organization of Programming Languages - CMPS 366-01 
+//* Date : 10/20/2021
+//************************************************************
 #include "Tile.h"
 
 /*
@@ -34,11 +38,22 @@ Tile::Tile(int A, int B)
 
 Tile::~Tile()
 {
-
 }
 
-// Verify the legitimacy of a tile according to the tiles in a double nine set
-bool Tile::verifyTile(int A, int B)	// Pass by reference to allow flipping into proper orientation
+/* *********************************************************************
+Function Name: verifyTile()
+Purpose: verify that a tile is a possible tile from the double nine set
+Parameters: none
+Return Value: bool
+Algorithm: 
+			1) create a string array of possible tiles to compare to
+			2) if one side of the tile is greater flip them
+			3) determine if the arguments exist in the array of possible tiles
+					if so return true
+			4) else return false
+Assistance Received: https://www.codegrepper.com/code-examples/cpp/convert+int+to+char+c%2B%2B
+********************************************************************* */
+bool Tile::verifyTile(int A, int B)
 {
 	string possible_tiles[] =
 	{
@@ -79,32 +94,70 @@ bool Tile::verifyTile(int A, int B)	// Pass by reference to allow flipping into 
 
 	// If we get through the loop without a match the value must be false
 	return false;
-}
+}// End of verifyTile()
 
-// 
+/* *********************************************************************
+Function Name: printTile()
+Purpose: print this tiles values using sideA and sideB
+Parameters: none
+Return Value: void
+Algorithm: output sideA-SideB so it looks like a tile
+Assistance Received: none
+********************************************************************* */
 void Tile::printTile()
 {
 	cout << this->sideA << "-" << this->sideB;
-}
+}// End of printTile()
 
-// Returns side A of the tile
+/* *********************************************************************
+Function Name: getSideA()
+Purpose: returns this tiles sideA
+Parameters: none
+Return Value: int
+Algorithm: return sideA
+Assistance Received: none
+********************************************************************* */
 int Tile::getSideA()
 {
 	return this->sideA;
-}
+}// End of getSideA()
 
-// Returns side B of the tile
+/* *********************************************************************
+Function Name: getSideB()
+Purpose: returns this tiles sideB
+Parameters: none
+Return Value: int
+Algorithm: return sideB
+Assistance Received: none
+********************************************************************* */
 int Tile::getSideB()
 {
 	return this->sideB;
-}
+}// End of getSideB()
 
-// Returns the tile as a string
+/* *********************************************************************
+Function Name: stringTile()
+Purpose: return the sideA and sideB in a string of sideA-SideB
+Parameters: none
+Return Value: string
+Algorithm: return string of sideA-SideB
+Assistance Received: none
+********************************************************************* */
 string Tile::stringTile()
 {
 	return to_string(this->sideA) + "-" + to_string(this->sideB);
-}
+}// End of stringTile()
 
+/* *********************************************************************
+Function Name: setTile()
+Purpose: sets a tile using the values passed
+Parameters: 
+			A, integer to be set to sideA, pass by value
+			B, integet to be set to SideB, pass by value
+Return Value: void
+Algorithm: if verifyTile is true, set this tile to sideA = A sideB = B
+Assistance Received: none
+********************************************************************* */
 void Tile::setTile(int A, int B)
 {
 	// If is possible tile, set the tiles sides to that of the given arguments
@@ -113,6 +166,20 @@ void Tile::setTile(int A, int B)
 		this->sideA = A;
 		this->sideB = B;
 	}
-}
+}// End of setTile()
 
+/* *********************************************************************
+Function Name: isDouble()
+Purpose: determine if this tile is a double
+Parameters: none
+Return Value: bool
+Algorithm: if both sideA and sideB are equal return true
+Assistance Received: none
+********************************************************************* */
+// Checks if the current tile is  double tile
+bool Tile::isDouble()
+{
+	if (this->sideA == this->sideB) { return true; }
+	else { return false; }
+}// End of isDouble()
 // End of file Tile.cpp

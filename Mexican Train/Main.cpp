@@ -1,5 +1,9 @@
-// Alec Rizzo - arizzo3@ramapo.edu
-// Main source file for Mexican Train C++
+//************************************************************
+//* Name:  Alec Rizzo
+//* Project : Mexican Train C++
+//* Class : Organization of Programming Languages - CMPS 366-01 
+//* Date : 10/20/2021
+//************************************************************
 
 #include <iostream>
 #include "Tile.h"
@@ -17,7 +21,7 @@ int main()
 
 
 	printRules();
-	Game testgame;
+	Game runGame;
 
 	return 0;
 }

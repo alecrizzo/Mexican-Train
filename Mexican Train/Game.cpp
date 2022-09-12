@@ -1,4 +1,9 @@
-// Alec Rizzo - arizzo3@ramapo.edu
+//************************************************************
+//* Name:  Alec Rizzo
+//* Project : Mexican Train C++
+//* Class : Organization of Programming Languages - CMPS 366-01 
+//* Date : 10/20/2021
+//************************************************************
 #include "Game.h"
 
 /*
@@ -10,43 +15,53 @@
 // Constructor of Game class
 Game::Game()
 {
-	matchOrRound();
+	loadOrRound();
 }
 
 // Destructor of Game class
 Game::~Game()
 {
-
 }
 
-void Game::matchOrRound()
+/* *********************************************************************
+Function Name: loadOrRound
+Purpose: to let the user load a save or start a new round
+Parameters: none
+Return Value: void
+Algorithm:
+			1) ask user to load game or start round
+			2) create round based on their input
+Assistance Received: none
+********************************************************************* */
+void Game::loadOrRound()
 {
-	cout << "\nWould you like to play a match or a single round?\n";
+	cout << "Would you like to load a save or start a new round? \n";
 	string input = "";
 	do
 	{
-		cout << "Enter 'M' for match or 'R' for round: ";
+		cout << "Enter (1) to load game (2) to create new round: ";
 		cin >> input;
 		transform(input.begin(), input.end(), input.begin(), ::tolower);
-		if (input == "m") { break; }
-		if (input == "r") { break; }
+		if (input == "1") { break; }
+		if (input == "2") { break; }
 	} while (true);	
 	// Had to do the while condition like this due to bool issues with string comparison
+	if (input == "1"){	Round gameRound = readSave(); }
+	else if (input == "2"){	 Round singleRound; }
+}// End of loadOrRound()
 
-	if (input == "m")
-	{
-		// !ALEC - set this up 
-			// Full game with repeating rounds
 
-		Round gameRound = readSave();
-	}
-	else if (input == "r")
-	{
-		Round singleRound;
-	}
-}
-
-// Prompts user for their input on loading save file
+/* *********************************************************************
+Function Name: readSaveInput
+Purpose: get the users input for the name of the save file to load
+Parameters: none
+Return Value: string for file name
+Algorithm:
+			1) ask user the name of the file
+			2) write the name of the file to file
+			3) add .txt to the end of the string
+Assistance Received: none
+********************************************************************* */
 string Game::readSaveInput()
 {
 	string file;
@@ -58,21 +73,28 @@ string Game::readSaveInput()
 
 	file += ".txt";
 	return file;
-}
+}// End of readSaveInput()
 
-// Function to load an existing save game
+/* *********************************************************************
+Function Name: readSave
+Purpose: lets the user load a savegame into a round
+Parameters: none
+Return Value: Round object
+Algorithm:
+			1) call readSaveInput() to get the filename we need to load
+			2) go through line by line and assign values to temporary vectors
+			3) read through the lines until the semicolons while assigning the values
+			4) at the end we initialize all the temporary values into our actual members and objects
+				that we will use for a round
+Assistance Received: none
+********************************************************************* */
 Round Game::readSave()
 {
-
-	string temp = "", temp2 = "", line = "", turn = "";
-
 	int i = 0, roundNum = 0;
-	//int t = 0;
-
+	string temp = "", temp2 = "", line = "", turn = "";
 	Computer computer;
 	Human human;
 
-	vector<string> tvec;
 	vector<Tile> mexican_train;
 	vector<Tile> boneyard;
 	vector<Tile> computer_hand;
@@ -400,6 +422,6 @@ Round Game::readSave()
 
 	// Return a round created with the values we loaded
 	return Round(turn, roundNum, human, computer, mexican_train, boneyard);
-}
 
+}// End of readSave()
 // End of file Game.cpp

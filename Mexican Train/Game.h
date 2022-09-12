@@ -1,4 +1,9 @@
-// Alec Rizzo - arizzo3@ramapo.edu
+//************************************************************
+//* Name:  Alec Rizzo
+//* Project : Mexican Train C++
+//* Class : Organization of Programming Languages - CMPS 366-01 
+//* Date : 10/20/2021
+//************************************************************
 // Header file for game related functions
 #pragma once
 
@@ -23,16 +28,12 @@ public:
 protected:
 
 private:
-	void matchOrRound();
-	//Round readSave(int& roundNum, Human& hum, Computer& comp);
+	void loadOrRound();
 	Round readSave();
 	string readSaveInput();
 
 	Human p1;
 	Computer p2;
-	//Round gameRound;
-
-	// vector<Tile> boneyard;
 };
 
 // End of file Game.h

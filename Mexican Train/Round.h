@@ -1,4 +1,9 @@
-// Alec Rizzo - arizzo3@ramapo.edu
+//************************************************************
+//* Name:  Alec Rizzo
+//* Project : Mexican Train C++
+//* Class : Organization of Programming Languages - CMPS 366-01 
+//* Date : 10/20/2021
+//************************************************************
 // Header file for a single round
 #pragma once
 
@@ -22,42 +27,48 @@ protected:
 private:
 	friend class Game;
 
-	Tile getEngine();						// Determines the current engine from a double nine set
+	Tile getEngine();
 
-	void setUpRound();						// Sets up a new round
-	void setEngine(Tile eng);				// Change the value of Engine tile
-	void removeEngineFromDeck(Tile eng);	// Removes the engine from the roundDeck
+	void changeTurn();
+	void setUpRound();
+	void resetRound();
+	void setEngine(Tile eng);
+	void removeEngineFromDeck(Tile eng);
 	void determineFirstTurn();
 	void gameplayLoop();
 
 	// Print functions
 	void printMexicanTrain();
 	void printBoneyard();
-	void printCoin(bool coin);				// Prints the face value of the coin
+	void printCoin(bool coin);
 	void printFirstTurn();
 
-	void displayBoard();					// Outputs the gameboard content for the user
+	void displayBoard();
 	void menu();				
 	int getMenuInput();
 	int getMenuWidth();
 
 	bool flipCoin(bool userVal);
-	bool getUsersCoin();					// get the side of the coin the user calls
+	bool getUsersCoin();
 
-	void writeSave();						// creates a save file of the current state of the game
-	string writeSaveInput();				// gets user input for the creating a save files name
+	void writeSave();
+	string writeSaveInput();
 
 	vector<Tile> boneyard;
 	vector<Tile> mexican_train;
 
-	Deck roundDeck;					// Full deck to start a round
-	Tile engine;					// The current engine tile
+	Deck roundDeck;
+	Tile engine;
 
-	Human hum;						// Human player object
-	Computer comp;					// Computer player object
+	Human hum;
+	Computer comp;
 
-	string turn;					// String for turns, should be either "Human" or "Computer"
-	int roundNum;					// The current round number
+	string turn;
+	int roundNum;
+
+	bool mexTrainOrphanDouble;
+	bool gameEnd;
+	bool isFirstRun;
 };
 
 // End of file Round.h

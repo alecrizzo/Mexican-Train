@@ -1,4 +1,9 @@
-// Alec Rizzo - arizzo3@ramapo.edu
+//************************************************************
+//* Name:  Alec Rizzo
+//* Project : Mexican Train C++
+//* Class : Organization of Programming Languages - CMPS 366-01 
+//* Date : 10/20/2021
+//************************************************************
 #include "deck.h"
 
 /*
@@ -38,7 +43,17 @@ Deck::Deck()
 	
 }
 
-// !TEST - Simple test function to print the entire set
+
+/* *********************************************************************
+Function Name: printDeck
+Purpose: print the entire deck after shuffling
+Parameters:
+Return Value: void
+Algorithm:
+			1) shuffle deck
+			2) print deck
+Assistance Received: none
+********************************************************************* */
 void Deck::printDeck()
 {
 	shuffleDeck();
@@ -48,18 +63,38 @@ void Deck::printDeck()
 		temp.printTile();
 		cout << endl;
 	}
-}
+}// End of printDeck()
 
-// Function to shuffle all the values in the Deck "randomly"
-void Deck::shuffleDeck() // Got help from: https://stackoverflow.com/questions/6926433/how-to-shuffle-a-stdvector
+/* *********************************************************************
+Function Name: shuffleDeck
+Purpose: shuffle the double nine set
+Parameters:
+Return Value: void
+Algorithm:
+			1) get time based seed
+			2) shuffle based on the rng from the seed
+Assistance Received: Got help from: https://stackoverflow.com/questions/6926433/how-to-shuffle-a-stdvector
+********************************************************************* */
+void Deck::shuffleDeck() 
 {
 	// Time based seed to shuffle pieces in the set
 	unsigned time = std::chrono::system_clock::now().time_since_epoch().count();
 	std::default_random_engine rng(time);
 	shuffle(begin(this->double_nine_set), end(this->double_nine_set), rng);
-}
+}// End of shuffleDeck()
 
-// Checks if the deck can pop the given number of values, if so it pushes them to the passed vector
+/* *********************************************************************
+Function Name: popNumTiles
+Purpose: pop the number of tiles equal to int num to the vector passed
+Parameters:
+			stack, vector of tiles passed by reference
+			num, integer of how many tiles to pop passed by value
+Return Value: void
+Algorithm:
+			1) pop the tiles and push them to the passed vector if the 
+				deck has enough tiles left
+Assistance Received: none
+********************************************************************* */
 void Deck::popNumTiles(vector<Tile> & stack, int num)
 {
 	if (!(this->double_nine_set.size() < num))
@@ -70,6 +105,5 @@ void Deck::popNumTiles(vector<Tile> & stack, int num)
 			this->double_nine_set.pop_back();
 		}
 	}
-}
-
+}// End of popNumTiles()
 // End of file Deck.cpp

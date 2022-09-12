@@ -6,8 +6,15 @@
 							  Rules
 ====================================================================
 */
-// Print function to allow player to choose if they want to see the rules
-// Intended to be used at the start of the program
+
+/* *********************************************************************
+Function Name: printRules()
+Purpose: print the rules for user if they want
+Parameters: none
+Return Value: void
+Algorithm: output the rules based on if user enters 1 or 2
+Assistance Received: none
+********************************************************************* */
 void printRules()
 {
 	// rulechoice is string to use getline to avoid cin getting repeat values on input (i.e. 32 == 2 after first loop)
@@ -19,10 +26,9 @@ void printRules()
 		cout << "Select an option: ";
 		getline(cin, rulechoice);
 	}
-
 	if (rulechoice == "1")
 	{
-		cout << "========================================================================================================================\n";
+		cout << "=======================================================================================================================\n";
 		cout << "Basics:\n\t Mexican Train is a domino game played by 2 players (one being you, the player, the other being the computer) \n";
 		cout <<		"\t in which the main objective is to score the fewest points after all the rounds\n\n";
 				
@@ -127,12 +133,11 @@ void printRules()
 		cout << "\t For the player who empties their hand, this sum is 0. The round points of each player are added to the game \n";
 		cout << "\t score of the player. Once the last round has ended, the winner of the game is the player with the lowest game\n";
 		cout << "\t score. If both the players have the same game score, the game is a draw.\n";
-		cout << "========================================================================================================================\n";
+		cout << "=======================================================================================================================\n";
 	}
 	else
 	{
-		cout << "========================================================================================================================\n";
+		cout << "=======================================================================================================================\n";
 	}
-}
-
+}// End of printRules()
 // End of file Rules.cpp

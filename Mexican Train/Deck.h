@@ -1,4 +1,9 @@
-// Alec Rizzo - arizzo3@ramapo.edu
+//************************************************************
+//* Name:  Alec Rizzo
+//* Project : Mexican Train C++
+//* Class : Organization of Programming Languages - CMPS 366-01 
+//* Date : 10/20/2021
+//************************************************************
 // Header file for the full deck
 #pragma once
 
@@ -29,6 +34,5 @@ private:
 	vector<Tile> double_nine_set;
 	const int DOUBLE_NINE_SIZE = 55;
 };
-
 
 // End of file Deck.h
