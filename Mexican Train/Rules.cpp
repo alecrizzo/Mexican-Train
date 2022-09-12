@@ -1,4 +1,3 @@
-// Alec Rizzo - arizzo3@ramapo.edu
 #include "rules.h"
 
 /*
